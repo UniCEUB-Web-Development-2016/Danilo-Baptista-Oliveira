@@ -1,0 +1,9 @@
+
+USUARIO
+http://localhost/ReviewNStore/user/?name=danilo&address=ruawhatever&phone=123213&email=danilo@gat.jk&password=fdasfadsf
+
+REVIEW
+http://localhost/ReviewNStore/review/?name=reviewManeiro&text=pruu&tips=dunno&videos=dasdsa&images=images.jpg
+
+PRODUCT
+http://localhost/ReviewNStore/product/?name=fallout&genre=tpg&console=ps4&date=2016-02-02&store=americanas.com&price=20&review=massa
