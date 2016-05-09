@@ -39,4 +39,32 @@ class ProductController
 
 		return $query;						
 	}
+//SELECT
+	public function search($request)
+	{
+		$params = $request->get_params();
+		$crit = $this->generateCriteria($params);
+
+		$db = new DatabaseConnector("localhost", "facebook", "mysql", "", "root", "");
+
+		$conn = $db->getConnection();
+
+		$result = $conn->query("SELECT name, genre, console, date,store,price,review FROM product WHERE ".$crit);
+
+		//foreach($result as $row) 
+
+		return $result->fetchAll(PDO::FETCH_ASSOC);
+
+	}
+
+	private function generateCriteria($params) 
+	{
+		$criteria = "";
+		foreach($params as $key => $value)
+		{
+			$criteria = $criteria.$key." LIKE '%".$value."%' OR ";
+		}
+
+		return substr($criteria, 0, -4);	
+	}
 }
