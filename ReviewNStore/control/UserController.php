@@ -25,7 +25,7 @@ class UserController
 
 	private function generateInsertQuery($user)
 	{
-		$query =  "INSERT INTO user (name, address, phone, email,  pass) 
+		$query =  "INSERT INTO user (first_name, address, phone, email,  pass) 
 		 VALUES ('".$user->getName()."','".
 					$user->getAddress()."','".
 					$user->getPhone()."','".
@@ -44,7 +44,7 @@ class UserController
 
 		$conn = $db->getConnection();
 
-		$result = $conn->query("SELECT first_name, last_name, email, birthdate, phone FROM user WHERE ".$crit);
+		$result = $conn->query("SELECT first_name, address, phone, email, pass FROM user WHERE ".$crit);
 
 		//foreach($result as $row) 
 

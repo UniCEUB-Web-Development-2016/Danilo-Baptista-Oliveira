@@ -9,7 +9,7 @@ class ReviewController
 	public function register($request)
 	{
 		$params = $request->get_params();
-		$review = new Review($params["name"],
+		$review = new Review($params["reviewname"],
 				 $params["text"],
 				 $params["tips"],
 				 $params["videos"],
@@ -25,7 +25,7 @@ class ReviewController
 
 	private function generateInsertQuery($review)
 	{
-		$query =  "INSERT INTO review (name, text, tips, videos,  images) 
+		$query =  "INSERT INTO review (reviewname, text, tips, videos,  images) 
 		 VALUES ('".$review->getName()."','".
 					$review->getText()."','".
 					$review->getTips()."','".
@@ -44,7 +44,7 @@ class ReviewController
 
 		$conn = $db->getConnection();
 
-		$result = $conn->query("SELECT name, text, tips, videos, images FROM review WHERE ".$crit);
+		$result = $conn->query("SELECT reviewname, text, tips, videos, images FROM review WHERE ".$crit);
 
 		//foreach($result as $row) 
 

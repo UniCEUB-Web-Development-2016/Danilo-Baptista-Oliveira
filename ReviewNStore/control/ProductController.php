@@ -9,7 +9,7 @@ class ProductController
 	public function register($request)
 	{
 		$params = $request->get_params();
-		$product = new Product($params["name"],
+		$product = new Product($params["first_name"],
 				 $params["genre"],
 				 $params["console"],
 				 $params["date"],
@@ -26,16 +26,16 @@ class ProductController
 	    return $conn->query($this->generateInsertQuery($product));	
 	}
 
-	private function generateInsertQuery($review)
+	private function generateInsertQuery($product)
 	{
-		$query =  "INSERT INTO product (name, genre, console, date, store, price, review) 
-		 VALUES ('".$review->getName()."','".
-					$review->getGenre()."','".
-					$review->getConsole()."','".
-					$review->getDate()."','".
-					$review->getStore()."','".
-					$review->getPrice()."','".
-					$review->getReview()."')";
+		$query =  "INSERT INTO product (first_name, genre, console, date, store, price, review) 
+		 VALUES ('".$product->getName()."','".
+					$product->getGenre()."','".
+					$product->getConsole()."','".
+					$product->getDate()."','".
+					$product->getStore()."','".
+					$product->getPrice()."','".
+					$product->getReview()."')";
 
 		return $query;						
 	}
@@ -49,7 +49,7 @@ class ProductController
 
 		$conn = $db->getConnection();
 
-		$result = $conn->query("SELECT name, genre, console, date,store,price,review FROM product WHERE ".$crit);
+		$result = $conn->query("SELECT first_name, genre, console, date,store,price,review FROM product WHERE ".$crit);
 
 		//foreach($result as $row) 
 
