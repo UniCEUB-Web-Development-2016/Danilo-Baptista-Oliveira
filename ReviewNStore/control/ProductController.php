@@ -45,7 +45,7 @@ class ProductController
 		$params = $request->get_params();
 		$crit = $this->generateCriteria($params);
 
-		$db = new DatabaseConnector("localhost", "facebook", "mysql", "", "root", "");
+		$db = new DatabaseConnector("localhost", "reviewnstore", "mysql", "", "root", "");
 
 		$conn = $db->getConnection();
 

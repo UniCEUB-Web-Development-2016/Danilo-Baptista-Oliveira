@@ -9,7 +9,7 @@ class UserController
 	public function register($request)
 	{
 		$params = $request->get_params();
-		$user = new User($params["name"],
+		$user = new User($params["first_name"],
 				 $params["address"],
 				 $params["phone"],
 				 $params["email"],
