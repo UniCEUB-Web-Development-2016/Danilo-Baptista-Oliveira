@@ -52,6 +52,22 @@ class ReviewController
 
 	}
 
+	public function delete($request)
+	{
+		$params = $request->get_params();
+		$crit = $this->generateCriteria($params);
+
+		$db = new DatabaseConnector("localhost", "reviewnstore", "mysql", "", "root", "");
+
+		$conn = $db->getConnection();
+
+		$result = $conn->query("DELETE FROM review WHERE ".$crit);
+
+		//foreach($result as $row) 
+
+		return $result->fetchAll(PDO::FETCH_ASSOC);
+	}
+
 	private function generateCriteria($params) 
 	{
 		$criteria = "";
