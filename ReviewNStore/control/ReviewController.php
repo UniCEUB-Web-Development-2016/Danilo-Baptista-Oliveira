@@ -6,9 +6,13 @@ include_once "database/DatabaseConnector.php";
 
 class ReviewController
 {
+
+	private $requiredParameters = array('reviewname', 'text', 'tips', 'videos', 'images');
+
 	public function register($request)
 	{
 		$params = $request->get_params();
+		if($this->isValid($params)){
 		$review = new Review($params["reviewname"],
 				 $params["text"],
 				 $params["tips"],
@@ -20,7 +24,11 @@ class ReviewController
 		$conn = $db->getConnection();
 		
 		
-	    return $conn->query($this->generateInsertQuery($review));	
+	    return $conn->query($this->generateInsertQuery($review));
+
+	    } else {
+            echo "Erro 400: Bad Request";
+        }	
 	}
 
 	private function generateInsertQuery($review)
@@ -78,4 +86,18 @@ class ReviewController
 
 		return substr($criteria, 0, -4);	
 	}
+
+	private function isValid($parameters)
+    {
+        $keys = array_keys($parameters);
+        $diff1 = array_diff($keys, $this->requiredParameters);
+        $diff2 = array_diff($this->requiredParameters, $keys);
+
+        if (empty($diff2) && empty($diff1))
+			return true;
+
+            return false;
+
+    }
+
 }

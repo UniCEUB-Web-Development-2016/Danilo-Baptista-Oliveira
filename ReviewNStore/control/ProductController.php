@@ -6,9 +6,12 @@ include_once "database/DatabaseConnector.php";
 
 class ProductController
 {
+	private $requiredParameters = array('first_name','genre','console','date','store','price','review');
+
 	public function register($request)
 	{
 		$params = $request->get_params();
+		if($this->isValid($params)){
 		$product = new Product($params["first_name"],
 				 $params["genre"],
 				 $params["console"],
@@ -23,7 +26,12 @@ class ProductController
 		$conn = $db->getConnection();
 		
 		
-	    return $conn->query($this->generateInsertQuery($product));	
+	    return $conn->query($this->generateInsertQuery($product));
+	   
+		}else{
+			echo "Erro 400:Bad Rquest";
+	
+		}
 	}
 
 	private function generateInsertQuery($product)
@@ -83,4 +91,17 @@ class ProductController
 
 		return substr($criteria, 0, -4);	
 	}
+
+	private function isValid($parameters)
+    {
+        $keys = array_keys($parameters);
+        $diff1 = array_diff($keys, $this->requiredParameters);
+        $diff2 = array_diff($this->requiredParameters, $keys);
+
+        if (empty($diff2) && empty($diff1))
+        	return true;
+
+            return false;
+
+    }
 }

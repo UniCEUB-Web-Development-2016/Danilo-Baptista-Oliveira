@@ -6,9 +6,12 @@ include_once "database/DatabaseConnector.php";
 
 class UserController
 {
+	private $requiredParameters = array('first_name', 'address', 'phone', 'email', 'password');
+
 	public function register($request)
 	{
 		$params = $request->get_params();
+		if($this->isValid($params)){
 		$user = new User($params["first_name"],
 				 $params["address"],
 				 $params["phone"],
@@ -21,6 +24,10 @@ class UserController
 		
 		
 	    return $conn->query($this->generateInsertQuery($user));	
+	}else{
+		echo "Erro 400: Bad Request";
+	}
+
 	}
 
 	private function generateInsertQuery($user)
@@ -53,38 +60,35 @@ class UserController
 
 	}
 
-	
-	/*public function update($request)
-	{
-		$params = $request->get_params();
+	// UPDATE
+		//--------------------------------------------------------------------------------------------------------------------
 
-		$user = new User($params["first_name"],
-				 $params["address"],
-				 $params["phone"],
-				 $params["email"],
-				 $params["password"]);
 
-		$crit = $this->generateCriteria($params);
+	public function update($request)
+    {
+        $params = $request->get_params();
 
-		
+        //var_dump($params);
 
-		$db = new DatabaseConnector("localhost", "reviewnstore", "mysql", "", "root", "");
+        //$crit = $this->generateCriteriaUpdate($params);
 
-		$conn = $db->getConnection();
+        $db = new DatabaseConnector("localhost", "reviewnstore", "mysql", "", "root", "");
 
-		$result = $conn->query("UPDATE user SET '".$user->getName()."','".
-					$user->getAddress()."','".
-					$user->getPhone()."','".
-					$user->getEmail()."','".
-					$user->getPassword()."' WHERE ".$crit);
+        $conn = $db->getConnection();
 
-		//foreach($result as $row) 
+        //Falha: o email não poderá ser trocado
+        foreach ($params as $key => $value) {
+            $result = $conn->query("UPDATE user SET " . $key . " = " . $value . " WHERE first_name = " . $params["first_name"]);
+        }
 
-		return $result->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }
 
-	}
-	*/
 
+
+	//DELETE
+
+	//--------------------------------------------------------------------------------------------------------------------
 		public function delete($request)
 	{
 		$params = $request->get_params();
@@ -101,6 +105,7 @@ class UserController
 		return $result->fetchAll(PDO::FETCH_ASSOC);
 
 	}
+
 	private function generateCriteria($params) 
 	{
 		$criteria = "";
@@ -111,4 +116,20 @@ class UserController
 
 		return substr($criteria, 0, -4);	
 	}
+
+	private function isValid($parameters)
+    {
+        $keys = array_keys($parameters);
+        $diff1 = array_diff($keys, $this->requiredParameters);
+        $diff2 = array_diff($this->requiredParameters, $keys);
+
+        if (empty($diff2) && empty($diff1))
+            return true;
+
+        return false;
+
+    }
+
+
+	
 }
