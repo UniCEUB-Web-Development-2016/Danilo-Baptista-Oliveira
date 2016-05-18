@@ -1,0 +1,82 @@
+USER
+1 - Requição: POST http://localhost/ReviewNStore/user/?first_name=Fabio&address=Estados Unidos&phone=123213&email=danilo@gat.jk&password=12345
+Status: OK
+Descrição: mostrando a senha na uri
+
+2 - Requição: POST http://localhost/ReviewNStore/user/?first_name=
+Status: OK
+Descrição: apresentando erro ao faltar parametro ok
+
+
+3 - Requisição: POST http://localhost/ReviewNStore/user/?first_name=&address=&phone=&email=&password=12345
+Status: ERRO
+Descrição:  Ao inserir dados incompletos não apresenta erro.
+
+4- Requisição: GET http://localhost/ReviewNStore/user/?first_name=Fabio&address=Estados Unidos
+Status: OK
+Descrição: 
+
+5- Requisição: GET http://localhost/ReviewNStore/user/?first_name=&address=&phone=&email=&password=12345
+Status: ERRO
+Descrição: Não esta apresentando a mensagem de erro ao buscar campos em branco.
+
+
+6- Requisição: GET http://localhost/ReviewNStore/user/?first_name=teste&address=kjfdskjkf
+Status: OK
+Descrição: fazendo busca por mais de um parametro ok
+
+
+7 - Requisição: UPDATE
+Status: Não implementado
+Descrição:
+
+ 8- Requisição: DELETE http://localhost/ReviewNStore/user/?first_name=Fabio
+Status: OK 
+Descrição: deleta mas sem validações, esta deletando mais de um usuario com o mesmo parametro, exemplo se tem dois usuarios com o mesmo nome exclui os dois registros, sugestao deletar pelo id que é unico.
+----------------------------------------------------
+REVIEW
+9 - Requisição: POST http://localhost/ReviewNStore/review/?reviewname=Teste&text=pruu&tips=dunno&videos=dasdsa&images=images.jpg 
+Status: OK
+Descrição: 
+
+10 - Requisição: POST http://localhost/ReviewNStore/review/?reviewname=Teste
+Status: OK
+Descrição: apresentando erro ao faltar parametro
+
+11 - Requisição: POST http://localhost/ReviewNStore/review/?reviewname=teste&text=&tips=&videos=&images=
+Status: ERRO
+Descrição: Ao inserir dados incompletos não apresenta erro.
+
+12 - Requisição: GET http://localhost/ReviewNStore/reviewname/?review_name=reviewManeiro
+Status: ERRO
+Descrição: Nao fez a busca
+
+
+13 - Requisição: DELETE http://localhost/ReviewNStore/review/?reviewname=test
+Status: OK
+Descrição: ao deletar está apresentando []
+---------------------------------------------------
+PRODUCT
+ 14 - Requisição: POST http://localhost/ReviewNStore/product/?first_name=test&genre=acao&console=PS4&date=2016-05-17&store=Casas Bahia&price=1999,99&review=test
+Status: OK
+Descrição: 
+
+15 - Requisição: POST http://localhost/ReviewNStore/product/?first_name=test
+Status: OK
+Descrição: Ao inserir dados incompletos apresenta erro ok.
+
+16 - Requisição: POST http://localhost/ReviewNStore/product/?first_name=&genre=&console=&date=&store=Casas Bahia&price=&review=
+Status: ERRO
+Descrição: Ao inserir dados incompletos não apresenta erro.
+17 - Requisição: GET http://localhost/ReviewNStore/product/?first_name=test&genre=acao&console=PS4&date=2016-05-17&store=Casas Bahia&price=1999,99&review=test
+Status: OK
+Descrição: retornando busca por todos os paramentros ok.
+
+18 - Requisição: GET http://localhost/ReviewNStore/product/?first_name=&genre=&console=&date=&store=&price=&review=
+Status: ERRO
+Descrição: retornando busca com todos os paramentros vazios.
+
+19 - Requisição: DELETE http://localhost/ReviewNStore/product/?first_name=test
+Status: OK
+Descrição: ao deletar está apresentando []
+
