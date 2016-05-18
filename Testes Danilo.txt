@@ -1,82 +1,82 @@
 USER
-1 - RequiÁ„o: POST http://localhost/ReviewNStore/user/?first_name=Fabio&address=Estados Unidos&phone=123213&email=danilo@gat.jk&password=12345
+1 - Requi√ß√£o: POST http://localhost/ReviewNStore/user/?first_name=Fabio&address=Estados Unidos&phone=123213&email=danilo@gat.jk&password=12345
 Status: OK
-DescriÁ„o: mostrando a senha na uri
+Descri√ß√£o: mostrando a senha na uri
 
-2 - RequiÁ„o: POST http://localhost/ReviewNStore/user/?first_name=
+2 - Requi√ß√£o: POST http://localhost/ReviewNStore/user/?first_name=
 Status: OK
-DescriÁ„o: apresentando erro ao faltar parametro ok
+Descri√ß√£o: apresentando erro ao faltar parametro ok
 
 
-3 - RequisiÁ„o: POST http://localhost/ReviewNStore/user/?first_name=&address=&phone=&email=&password=12345
+3 - Requisi√ß√£o: POST http://localhost/ReviewNStore/user/?first_name=&address=&phone=&email=&password=12345
 Status: ERRO
-DescriÁ„o:  Ao inserir dados incompletos n„o apresenta erro.
+Descri√ß√£o:  Ao inserir dados incompletos n√£o apresenta erro.
 
-4- RequisiÁ„o: GET http://localhost/ReviewNStore/user/?first_name=Fabio&address=Estados Unidos
+4- Requisi√ß√£o: GET http://localhost/ReviewNStore/user/?first_name=Fabio&address=Estados Unidos
 Status: OK
-DescriÁ„o: 
+Descri√ß√£o: 
 
-5- RequisiÁ„o: GET http://localhost/ReviewNStore/user/?first_name=&address=&phone=&email=&password=12345
+5- Requisi√ß√£o: GET http://localhost/ReviewNStore/user/?first_name=&address=&phone=&email=&password=12345
 Status: ERRO
-DescriÁ„o: N„o esta apresentando a mensagem de erro ao buscar campos em branco.
+Descri√ß√£o: N√£o esta apresentando a mensagem de erro ao buscar campos em branco.
 
 
-6- RequisiÁ„o: GET http://localhost/ReviewNStore/user/?first_name=teste&address=kjfdskjkf
+6- Requisi√ß√£o: GET http://localhost/ReviewNStore/user/?first_name=teste&address=kjfdskjkf
 Status: OK
-DescriÁ„o: fazendo busca por mais de um parametro ok
+Descri√ß√£o: fazendo busca por mais de um parametro ok
 
 
-7 - RequisiÁ„o: UPDATE
-Status: N„o implementado
-DescriÁ„o:
+7 - Requisi√ß√£o: UPDATE
+Status: N√£o implementado
+Descri√ß√£o:
 
- 8- RequisiÁ„o: DELETE http://localhost/ReviewNStore/user/?first_name=Fabio
+ 8- Requisi√ß√£o: DELETE http://localhost/ReviewNStore/user/?first_name=Fabio
 Status: OK 
-DescriÁ„o: deleta mas sem validaÁıes, esta deletando mais de um usuario com o mesmo parametro, exemplo se tem dois usuarios com o mesmo nome exclui os dois registros, sugestao deletar pelo id que È unico.
+Descri√ß√£o: deleta mas sem valida√ß√µes, esta deletando mais de um usuario com o mesmo parametro, exemplo se tem dois usuarios com o mesmo nome exclui os dois registros, sugestao deletar pelo id que √© unico.
 ----------------------------------------------------
 REVIEW
-9 - RequisiÁ„o: POST http://localhost/ReviewNStore/review/?reviewname=Teste&text=pruu&tips=dunno&videos=dasdsa&images=images.jpg 
+9 - Requisi√ß√£o: POST http://localhost/ReviewNStore/review/?reviewname=Teste&text=pruu&tips=dunno&videos=dasdsa&images=images.jpg 
 Status: OK
-DescriÁ„o: 
+Descri√ß√£o: 
 
-10 - RequisiÁ„o: POST http://localhost/ReviewNStore/review/?reviewname=Teste
+10 - Requisi√ß√£o: POST http://localhost/ReviewNStore/review/?reviewname=Teste
 Status: OK
-DescriÁ„o: apresentando erro ao faltar parametro
+Descri√ß√£o: apresentando erro ao faltar parametro
 
-11 - RequisiÁ„o: POST http://localhost/ReviewNStore/review/?reviewname=teste&text=&tips=&videos=&images=
+11 - Requisi√ß√£o: POST http://localhost/ReviewNStore/review/?reviewname=teste&text=&tips=&videos=&images=
 Status: ERRO
-DescriÁ„o: Ao inserir dados incompletos n„o apresenta erro.
+Descri√ß√£o: Ao inserir dados incompletos n√£o apresenta erro.
 
-12 - RequisiÁ„o: GET http://localhost/ReviewNStore/reviewname/?review_name=reviewManeiro
+12 - Requisi√ß√£o: GET http://localhost/ReviewNStore/reviewname/?review_name=reviewManeiro
 Status: ERRO
-DescriÁ„o: Nao fez a busca
+Descri√ß√£o: Nao fez a busca
 
 
-13 - RequisiÁ„o: DELETE http://localhost/ReviewNStore/review/?reviewname=test
+13 - Requisi√ß√£o: DELETE http://localhost/ReviewNStore/review/?reviewname=test
 Status: OK
-DescriÁ„o: ao deletar est· apresentando []
+Descri√ß√£o: ao deletar est√° apresentando []
 ---------------------------------------------------
 PRODUCT
- 14 - RequisiÁ„o: POST http://localhost/ReviewNStore/product/?first_name=test&genre=acao&console=PS4&date=2016-05-17&store=Casas Bahia&price=1999,99&review=test
+ 14 - Requisi√ß√£o: POST http://localhost/ReviewNStore/product/?first_name=test&genre=acao&console=PS4&date=2016-05-17&store=Casas Bahia&price=1999,99&review=test
 Status: OK
-DescriÁ„o: 
+Descri√ß√£o: 
 
-15 - RequisiÁ„o: POST http://localhost/ReviewNStore/product/?first_name=test
+15 - Requisi√ß√£o: POST http://localhost/ReviewNStore/product/?first_name=test
 Status: OK
-DescriÁ„o: Ao inserir dados incompletos apresenta erro ok.
+Descri√ß√£o: Ao inserir dados incompletos apresenta erro ok.
 
-16 - RequisiÁ„o: POST http://localhost/ReviewNStore/product/?first_name=&genre=&console=&date=&store=Casas Bahia&price=&review=
+16 - Requisi√ß√£o: POST http://localhost/ReviewNStore/product/?first_name=&genre=&console=&date=&store=Casas Bahia&price=&review=
 Status: ERRO
-DescriÁ„o: Ao inserir dados incompletos n„o apresenta erro.
-17 - RequisiÁ„o: GET http://localhost/ReviewNStore/product/?first_name=test&genre=acao&console=PS4&date=2016-05-17&store=Casas Bahia&price=1999,99&review=test
+Descri√ß√£o: Ao inserir dados incompletos n√£o apresenta erro.
+17 - Requisi√ß√£o: GET http://localhost/ReviewNStore/product/?first_name=test&genre=acao&console=PS4&date=2016-05-17&store=Casas Bahia&price=1999,99&review=test
 Status: OK
-DescriÁ„o: retornando busca por todos os paramentros ok.
+Descri√ß√£o: retornando busca por todos os paramentros ok.
 
-18 - RequisiÁ„o: GET http://localhost/ReviewNStore/product/?first_name=&genre=&console=&date=&store=&price=&review=
+18 - Requisi√ß√£o: GET http://localhost/ReviewNStore/product/?first_name=&genre=&console=&date=&store=&price=&review=
 Status: ERRO
-DescriÁ„o: retornando busca com todos os paramentros vazios.
+Descri√ß√£o: retornando busca com todos os paramentros vazios.
 
-19 - RequisiÁ„o: DELETE http://localhost/ReviewNStore/product/?first_name=test
+19 - Requisi√ß√£o: DELETE http://localhost/ReviewNStore/product/?first_name=test
 Status: OK
-DescriÁ„o: ao deletar est· apresentando []
+Descri√ß√£o: ao deletar est√° apresentando [].
 
