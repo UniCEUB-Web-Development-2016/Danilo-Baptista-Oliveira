@@ -68,20 +68,18 @@ class UserController
     {
         $params = $request->get_params();
 
-        //var_dump($params);
-
-        //$crit = $this->generateCriteriaUpdate($params);
-
         $db = new DatabaseConnector("localhost", "reviewnstore", "mysql", "", "root", "");
 
         $conn = $db->getConnection();
 
-        //Falha: o email não poderá ser trocado
-        foreach ($params as $key => $value) {
-            $result = $conn->query("UPDATE user SET " . $key . " = " . $value . " WHERE first_name = " . $params["first_name"]);
-        }
+        return $conn->query($this->generateUpdateQuery($params));
+    }
 
-        return $result;
+    private function generateUpdateQuery($params)
+    {
+        $crit = $this->generateUpdateCriteria($params);
+
+        return "UPDATE user SET " . $crit . " WHERE first_name = '" . $params["first_name"] . "'";
     }
 
 
@@ -130,6 +128,16 @@ class UserController
 
     }
 
+    private function generateUpdateCriteria($params)
+    {
+        $criteria = "";
+        foreach ($params as $key => $value)
+        {
+            $criteria = $criteria.$key." = '".$value."' ,";
+        }
+
+        return substr($criteria, 0, -2);
+    }
 
 	
 }
