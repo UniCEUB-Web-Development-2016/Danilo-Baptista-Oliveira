@@ -82,7 +82,16 @@ class UserController
         return "UPDATE user SET " . $crit . " WHERE first_name = '" . $params["first_name"] . "'";
     }
 
+    private function generateUpdateCriteria($params)
+    {
+        $criteria = "";
+        foreach ($params as $key => $value)
+        {
+            $criteria = $criteria.$key." = '".$value."' ,";
+        }
 
+        return substr($criteria, 0, -2);
+    }
 
 	//DELETE
 
@@ -103,7 +112,7 @@ class UserController
 		return $result->fetchAll(PDO::FETCH_ASSOC);
 
 	}
-
+	//------------------------------------------------------------------------------------------------------------------------
 	private function generateCriteria($params) 
 	{
 		$criteria = "";
@@ -128,16 +137,7 @@ class UserController
 
     }
 
-    private function generateUpdateCriteria($params)
-    {
-        $criteria = "";
-        foreach ($params as $key => $value)
-        {
-            $criteria = $criteria.$key." = '".$value."' ,";
-        }
-
-        return substr($criteria, 0, -2);
-    }
+    
 
 	
 }

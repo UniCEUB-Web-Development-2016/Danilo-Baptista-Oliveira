@@ -60,6 +60,40 @@ class ReviewController
 
 	}
 
+	// UPDATE
+		//--------------------------------------------------------------------------------------------------------------------
+
+
+	public function update($request)
+    {
+        $params = $request->get_params();
+
+        $db = new DatabaseConnector("localhost", "reviewnstore", "mysql", "", "root", "");
+
+        $conn = $db->getConnection();
+
+        return $conn->query($this->generateUpdateQuery($params));
+    }
+
+    private function generateUpdateQuery($params)
+    {
+        $crit = $this->generateUpdateCriteria($params);
+
+        return "UPDATE review SET " . $crit . " WHERE reviewname = '" . $params["reviewname"] . "'";
+    }
+
+    private function generateUpdateCriteria($params)
+    {
+        $criteria = "";
+        foreach ($params as $key => $value)
+        {
+            $criteria = $criteria.$key." = '".$value."' ,";
+        }
+
+        return substr($criteria, 0, -2);
+    }
+//---------------------------------------------------------------------------------------------
+
 	public function delete($request)
 	{
 		$params = $request->get_params();
