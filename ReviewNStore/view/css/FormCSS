@@ -1,0 +1,16 @@
+#contactform {       
+width: 500px;
+     padding: 20px;    
+      background: #f0f0f0;   
+        overflow:auto;    
+           /* Border style */   
+             border: 1px solid #cccccc;    
+              -moz-border-radius: 7px;   
+                -webkit-border-ra
+        dius: 7px;  
+           border-radius: 7px;   
+                /* Border Shadow */ 
+                    -moz-box-shadow: 2px 2px 2px #cccccc; 
+                        -webkit-box-shadow: 2px 2px 2px #cccccc;   
+                          box-shadow: 2px 2px 2px #cccccc;   
+                              }
