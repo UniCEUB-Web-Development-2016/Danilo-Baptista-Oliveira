@@ -90,7 +90,7 @@ class UserController
             $criteria = $criteria.$key." = '".$value."' ,";
         }
 
-        return substr($criteria, 0, -2);
+        return substr($criteria, 0, -4);
     }
 
 	//DELETE
@@ -118,7 +118,7 @@ class UserController
 		$criteria = "";
 		foreach($params as $key => $value)
 		{
-			$criteria = $criteria.$key." LIKE '%".$value."%' OR ";
+			$criteria = $criteria.$key." LIKE '%".$value."%' AND ";
 		}
 
 		return substr($criteria, 0, -4);	

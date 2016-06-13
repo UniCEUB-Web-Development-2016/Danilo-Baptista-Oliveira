@@ -121,7 +121,7 @@ class ProductController
 		$criteria = "";
 		foreach($params as $key => $value)
 		{
-			$criteria = $criteria.$key." LIKE '%".$value."%' OR ";
+			$criteria = $criteria.$key." LIKE '%".$value."%' AND ";
 		}
 
 		return substr($criteria, 0, -4);	
