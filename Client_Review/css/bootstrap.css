@@ -6766,11 +6766,11 @@ button.close {
 margin-left: 500px;
 }
 
-block-quote {
+blockquote {
   background-color: #D3DDDA;
   padding: 20px;
   border: 10px solid #C2CCCA;
-  width: 250px;
+  width: 500px;
   margin: 0;
   box-sizing:border-box;
 }

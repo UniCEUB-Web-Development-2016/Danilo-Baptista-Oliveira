@@ -11,7 +11,7 @@ $request_response = json_decode($response->body);
 
 foreach($request_response as $value)
 {
-?>	<p class=lead>Nome: <?php echo $value->first_name . '<br>';
+?><center><blockquote><p class=lead>Nome: <?php echo $value->first_name . '<br>';
 }?><p>
 
 <?php 
@@ -30,7 +30,7 @@ foreach($request_response as $value)
 foreach($request_response as $value)
 {
 ?>	<p class=lead>Email: <?php echo $value->email . '<br>';
-}?><p>
+}?><p></blockquote><center>
 
 <?php }
 Else{

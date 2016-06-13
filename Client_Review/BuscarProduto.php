@@ -9,7 +9,7 @@ $request_response = json_decode($response->body);
 ?><h1>Resultados</h1><?php
 foreach($request_response as $value)
 {
-?>	<p class=lead>Nome do jogo: <?php echo $value->first_name . '<br>';
+?><center><blockquote><p class=lead>Nome do jogo: <?php echo $value->first_name . '<br>';
 }?><p>
 
 <?php 
@@ -46,7 +46,8 @@ foreach($request_response as $value)
 foreach($request_response as $value)
 {
 ?>	<p class=lead>Review: <?php echo $value->review . '<br>';
-}?><p>
+}?><p></blockquote><center>
+
 <?php  
 ?>
 
