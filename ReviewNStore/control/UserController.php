@@ -10,23 +10,25 @@ class UserController
 
 	public function register($request)
 	{
+
 		$params = $request->get_params();
-		if($this->isValid($params)){
-		$user = new User($params["first_name"],
-				 $params["address"],
-				 $params["phone"],
-				 $params["email"],
-				 $params["password"]);
+			if($this->isValid($params)){
+			$user = new User($params["first_name"],
+				 	$params["address"],
+				 	$params["phone"],
+				 	$params["email"],
+				 	$params["password"]);
 
-		$db = new DatabaseConnector("localhost", "reviewnstore", "mysql", "", "root", "");
+			$db = new DatabaseConnector("localhost", "reviewnstore", "mysql", "", "root", "");
 
-		$conn = $db->getConnection();
-		
+			$conn = $db->getConnection();
+
 		
 	    return $conn->query($this->generateInsertQuery($user));	
 	}else{
 		echo "Erro 400: Bad Request";
 	}
+
 
 	}
 
@@ -52,13 +54,27 @@ class UserController
 
 		$conn = $db->getConnection();
 
-		$result = $conn->query("SELECT first_name, address, phone, email, pass FROM user WHERE ".$crit);
+		$result = $conn->query("SELECT id,first_name, address, phone, email, pass FROM user WHERE ".$crit);
 
 		//foreach($result as $row) 
 
-		return $result->fetchAll(PDO::FETCH_ASSOC);
+		$fetch = $result->fetchAll(PDO::FETCH_ASSOC);
+		if(empty($fetch) || isset($params["first_name"])){ 
+		}else{
+			if(isset($params["first_name"]) && isset($params["pass"])){
+				$this->createSession($fetch[0]["first_name"]);
+			}
+		}
+		return $fetch;
 
 	}
+
+	private function createSession($params){
+		start_session();
+		$_SESSION["first_name"] = $params;
+		return $_SESSION["first_name"];
+	}
+    
 
 	// UPDATE
 		//--------------------------------------------------------------------------------------------------------------------
@@ -72,25 +88,13 @@ class UserController
 
         $conn = $db->getConnection();
 
-        return $conn->query($this->generateUpdateQuery($params));
-    }
-
-    private function generateUpdateQuery($params)
-    {
-        $crit = $this->generateUpdateCriteria($params);
-
-        return "UPDATE user SET " . $crit . " WHERE first_name = '" . $params["first_name"] . "'";
-    }
-
-    private function generateUpdateCriteria($params)
-    {
-        $criteria = "";
-        foreach ($params as $key => $value)
-        {
-            $criteria = $criteria.$key." = '".$value."' ,";
+        foreach ($params as $key => $value) {
+            $result = $conn->query("UPDATE user SET " . $key . " =  '" . $value . "' WHERE first_name = '" . $params["first_name"] . "'");
+            
         }
+		
+        return $result;
 
-        return substr($criteria, 0, -4);
     }
 
 	//DELETE
@@ -118,7 +122,7 @@ class UserController
 		$criteria = "";
 		foreach($params as $key => $value)
 		{
-			$criteria = $criteria.$key." LIKE '%".$value."%' AND ";
+			$criteria = $criteria.$key." LIKE '".$value."' AND ";
 		}
 
 		return substr($criteria, 0, -4);	
@@ -126,6 +130,7 @@ class UserController
 
 	private function isValid($parameters)
     {
+
         $keys = array_keys($parameters);
         $diff1 = array_diff($keys, $this->requiredParameters);
         $diff2 = array_diff($this->requiredParameters, $keys);
@@ -136,8 +141,7 @@ class UserController
         return false;
 
     }
-
-    
+	
 
 	
 }

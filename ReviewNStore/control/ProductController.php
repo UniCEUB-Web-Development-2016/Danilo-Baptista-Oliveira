@@ -6,7 +6,7 @@ include_once "database/DatabaseConnector.php";
 
 class ProductController
 {
-	private $requiredParameters = array('first_name','genre','console','date','store','price','review');
+	private $requiredParameters = array('first_name','genre','console','date','store','price','review','images');
 
 	public function register($request)
 	{
@@ -18,7 +18,8 @@ class ProductController
 				 $params["date"],
 				 $params["store"],
 				 $params["price"],
-				 $params["review"]
+				 $params["review"],
+				 $params["images"]
 				 );
 
 		$db = new DatabaseConnector("localhost", "reviewnstore", "mysql", "", "root", "");
@@ -36,14 +37,15 @@ class ProductController
 
 	private function generateInsertQuery($product)
 	{
-		$query =  "INSERT INTO product (first_name, genre, console, date, store, price, review) 
+		$query =  "INSERT INTO product (first_name, genre, console, date, store, price, review,images) 
 		 VALUES ('".$product->getName()."','".
 					$product->getGenre()."','".
 					$product->getConsole()."','".
 					$product->getDate()."','".
 					$product->getStore()."','".
 					$product->getPrice()."','".
-					$product->getReview()."')";
+					$product->getReview()."','".
+					$product->getImages()."')";
 
 		return $query;						
 	}
@@ -57,7 +59,7 @@ class ProductController
 
 		$conn = $db->getConnection();
 
-		$result = $conn->query("SELECT first_name, genre, console, date,store,price,review FROM product WHERE ".$crit);
+		$result = $conn->query("SELECT first_name, genre, console, date,store,price,review,images FROM product WHERE ".$crit);
 
 		//foreach($result as $row) 
 
@@ -100,7 +102,7 @@ class ProductController
 //-----------------------------------------------------------------------------
 
 
-			public function delete($request)
+		public function delete($request)
 	{
 		$params = $request->get_params();
 		$crit = $this->generateCriteria($params);

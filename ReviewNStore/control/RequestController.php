@@ -24,7 +24,7 @@ class RequestController
 		$a = str_replace ("?" , "" , $string_params);
 
 		$b = explode("&", $a);
-		
+
 		$params_map = array();
 
 		foreach ($b as $value) {

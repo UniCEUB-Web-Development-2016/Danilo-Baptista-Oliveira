@@ -9,9 +9,10 @@ class Product
     private $store;
     private $price;
     private $review;
+    private $images;
     
     public function __construct($name,$genre,
-    $console, $date, $store, $price, $review)
+    $console, $date, $store, $price, $review,$images)
     {
         $this->name = $name;
         $this->genre= $genre;
@@ -20,6 +21,7 @@ class Product
         $this->store= $store;
         $this->price = $price;
         $this->review= $review;
+        $this->images= $images;
     }
 
     public function getName()
@@ -53,6 +55,10 @@ class Product
 public function getReview()
     {
         return $this->review;
+    }
+    public function getImages()
+    {
+        return $this->images;
     }
 
 

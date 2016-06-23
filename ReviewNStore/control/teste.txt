@@ -20,3 +20,6 @@ http://localhost/ReviewNStore/review/?reviewname=reviewManeiro
 
 PRODUCT
 http://localhost/ReviewNStore/product/?first_name=cebola
+
+UPDATE
+http://localhost/ReviewNStore/user/?first_name=Danilo&address=sq16&phone=32726980&email=das&pass=Neves
