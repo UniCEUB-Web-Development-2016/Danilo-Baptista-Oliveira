@@ -14,9 +14,17 @@ main div{
         text-align:center;
         text-decoration:none;
 }
+.principal2{
+    padding: 170px 15px;
+    text-align: center;    
+
+}
+
 .principal{
-    padding: 40px 15px;
-    text-align: center;
+    padding: 60px 15px;
+    text-align: center;    
+    margin-right:300px;
+    margin-left:300px;
 }
 .tableListagem{
     border-collapse: collapse;

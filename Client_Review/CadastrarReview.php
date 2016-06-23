@@ -1,28 +1,28 @@
 <?php include("Cabecalho.php")?>
-                <h1>Formulario de Cadastro do review</h1>
-                <form action="Executar?acao=Pessoa.salvar" method="post" name="form1">
+                <h1>Cadastre um review:</h1>
+                <form action="insertReview.php" method="post" name="form1">
                      <table class="table">
                         <tr>
                            <td>Nome:</td>
-                           <td><input Placeholder="Insira o nome " class="form-control" type="text" name="nome"></td>
+                           <td><input Placeholder="Insira o nome do review " class="form-control" type="text" name="reviewname"></td>
                        </tr>
                        <tr>
                            <td>Text</td>
-                           <td><input Placeholder="Insira o cpf " class="form-control" name="cpf" ></td> 
+                           <td><input Placeholder="Insira o texto " class="form-control" name="text" ></td> 
                        </tr> 
                        <tr>
                            <td>Tips:</td>
-                           <td> <input Placeholder="Insira o telefone " class="form-control" type="text" 
-                           name="telefone" onKeyPress="MascaraTelefone(form1.telefone);" 
-                           maxlength="14" onBlur="ValidaTelefone(form1.telefone);"></td>
+                           <td> <input Placeholder="Insira as dicas " class="form-control" type="text" 
+                           name="tips" 
+                           maxlength="14" ></td>
                        </tr> 
                        <tr>
                            <td>Videos:</td>
-                           <td><input  Placeholder="Insira o RG " class="form-control" type="number" name="RG" maxlength="8"></td>
+                           <td><input  Placeholder="Insira o link de um video " class="form-control" type="text" name="videos" ></td>
                        </tr> 
                        <tr>
                            <td>Images:</td>
-                           <td><input Placeholder="Insira o nome do pai " class="form-control" type="text" name="Pai"></td>
+                           <td><input Placeholder="Insira uma imagem .jpg " class="form-control" type="text" name="images"></td>
                        </tr> 
                            <td>
                                <button class="btn btn-primary" type="submit"/>Cadastrar</button>

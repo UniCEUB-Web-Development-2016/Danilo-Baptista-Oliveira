@@ -4,7 +4,7 @@
      
         <title>Review and SHOP!</title>
         <meta charset="utf-8">
-        <script language="JavaScript" type="text/javascript" ></script>
+        <script language="JavaScript" type="text/javascript" "></script>
         <link rel="icon" href="imagens/reviewnstore.png">
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/cadastro.css" rel="stylesheet">
@@ -28,4 +28,4 @@
             </div>    
         </div>    
         <div class="container">    
-            <div class="principal">
+            <div class="principal2">

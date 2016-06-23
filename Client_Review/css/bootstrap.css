@@ -1477,7 +1477,7 @@ abbr[data-original-title] {
   text-transform: uppercase;
 }
 blockquote {
-  padding: 10px 20px;
+  padding: 20px 10px;
   margin: 0 0 20px;
   font-size: 17.5px;
   border-left: 5px solid #eee;
@@ -1584,6 +1584,7 @@ pre code {
   overflow-y: scroll;
 }
 .container {
+  padding-top:auto;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -3120,7 +3121,7 @@ fieldset[disabled] .btn-default.focus {
 }
 .btn-primary {
   color: #fff;
-  background-color: #337ab7;
+  background-color: #00688b;
   border-color: #2e6da4;
   
 }
@@ -5254,11 +5255,15 @@ a.thumbnail.active {
 .list-group-item {
   position: relative;
   display: block;
-  padding: 10px 15px;
+  padding: 15px 20px;
   margin-bottom: -1px;
   background-color: #fff;
-  border: 1px solid #ddd;
+  border: 1px solid #000;
+
+ 
 }
+
+
 .list-group-item:first-child {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
@@ -5280,7 +5285,7 @@ a.list-group-item:hover,
 button.list-group-item:hover,
 a.list-group-item:focus,
 button.list-group-item:focus {
-  color: #555;
+  color: #FFF;
   text-decoration: none;
   background-color: #f5f5f5;
 }
@@ -6763,14 +6768,18 @@ button.close {
 /*# sourceMappingURL=bootstrap.css.map */
 
 .posicaobusca{
-margin-left: 500px;
+  margin-top:10px;
 }
 
 blockquote {
-  background-color: #D3DDDA;
+  background-color: #FFF;
   padding: 20px;
-  border: 10px solid #C2CCCA;
-  width: 500px;
+  border: 3px solid #696969;
+  width: 200px;
+  height:400px;
   margin: 0;
+  position:relative;
+  left:1020px;
+  bottom:250px;
   box-sizing:border-box;
 }
